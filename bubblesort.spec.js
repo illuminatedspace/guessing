@@ -1,17 +1,19 @@
 describe('Bubble Sort', function(){
     var arr = [];
+    var sortedArr = [];
     var isSorted = function(arr) {
+    	var sorted = true;
         arr.forEach(function(ele, idx){
-            if(ele > arr[idx]){
-                return false;
-            } else {
-                return true;
+            if(ele > arr[idx + 1]){
+                sorted = false;
             }
         });
+        return sorted;
     };
     
     beforeEach(function(){
         arr = [4, 7, 3, 9, 1, 6];
+        sortedArr = bubbleSort(arr);
     });
 
     describe('Performs tasks on arrays', function(){
@@ -20,7 +22,7 @@ describe('Bubble Sort', function(){
         });
 
         it('Sorts the array', function(){
-            expect(isSorted(arr)).toEqual(true);
+            expect(isSorted(sortedArr)).toEqual(true);
         });
 
     });
@@ -45,8 +47,8 @@ describe('Bubble Sort', function(){
         });
 
       
-      xit("calls swap a # of times", function(){
-         expect(swap).toHaveBeenCalledTimes(0);
+      it("calls swap a # of times", function(){
+         expect(window.swap).toHaveBeenCalledTimes(8);
       });
     })
 
@@ -60,12 +62,12 @@ describe('Bubble Sort', function(){
             bubbleSort([4, 7, 3, 9, 1, 6]);
         });
 
-        it("calls compare a # of times", function(){
-          expect(window.compare).toHaveBeenCalledTimes(0);
+        it("called compare", function(){
+            expect(window.compare).toHaveBeenCalled();
         });
 
-        it("called compare", function(){
-            expect(compare).toHaveBeenCalled();
+        it("calls compare a # of times", function(){
+          expect(window.compare).toHaveBeenCalledTimes(21);
         });
     })
 
